@@ -3,6 +3,7 @@ package com.davidhavel.javasql;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);
+        stage.getIcons().add(new Image(HelloApplication.class.getResource("/com/davidhavel/javasql/img/app-icon.jpg").toString()));
         stage.show();
     }
 
