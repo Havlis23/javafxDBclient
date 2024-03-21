@@ -1,5 +1,6 @@
 package com.davidhavel.javasql;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,45 +9,41 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.stage.Stage;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AppController implements Initializable {
-
-    @FXML
-    private ComboBox<String> chooseTable;
-
-    @FXML
-    private Label choosedTable;
-
-    @FXML
-    private TableView<ObservableList<String>> recordsTable;
-
-    @FXML
-    private MenuBar menuBar;
-
-    @FXML
-    private Menu newConnectionItem2;
-
 
     private static String user = "it-davidhavel";
     private static String pass = "aSdf.1234";
     private static String host = "sql.stredniskola.com:3306";
     private static String dbname = "davidhavel";
-
+    @FXML
+    private ComboBox<String> chooseTable;
+    @FXML
+    private Label choosedTable;
+    @FXML
+    private TableView<ObservableList<String>> recordsTable;
+    @FXML
+    private MenuBar menuBar;
+    @FXML
+    private Menu newConnectionItem2;
     private Connection connection;
 
+    public static void setConnectionDetails(String host, String name, String user, String pass) {
+        AppController.host = host;
+        AppController.dbname = name;
+        AppController.user = user;
+        AppController.pass = pass;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -115,26 +112,20 @@ public class AppController implements Initializable {
             noveOkno.setTitle("Nové připojení");
 
             try {
-                // Load the FXML file
                 FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("newConnection.fxml"));
-                // Create the Scene
                 Scene scene = new Scene(fxmlLoader.load());
-                // Set the Scene on the Stage
                 noveOkno.setScene(scene);
             } catch (IOException e) {
                 System.err.println("Chyba vytvoření nového okna: " + e);
             }
 
-            // Show the new Stage
             noveOkno.show();
 
-            // TODO: Establish a new connection to the new database
+            // TODO: Vytvoření nového připojení k nové databázi
         });
 
-// Add the MenuItem to the Menu
         newWindowMenu.getItems().add(newConnectionItem);
 
-// Add the Menu to the MenuBar
         menuBar.getMenus().add(newWindowMenu);
     }
 
@@ -196,13 +187,6 @@ public class AppController implements Initializable {
         }
 
 
-    }
-
-    public static void setConnectionDetails(String host, String name, String user, String pass) {
-        AppController.host = host;
-        AppController.dbname = name;
-        AppController.user = user;
-        AppController.pass = pass;
     }
 
 
