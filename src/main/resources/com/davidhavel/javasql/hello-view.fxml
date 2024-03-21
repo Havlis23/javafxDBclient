@@ -8,34 +8,49 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.davidhavel.javasql.HelloController">
-   <children>
-      <Button layoutX="247.0" layoutY="167.0" mnemonicParsing="false" onAction="#getRecord" text="Získat záznam" />
-      <ComboBox fx:id="chooseTable" layoutX="50.0" layoutY="85.0" prefWidth="150.0" />
-      <Label layoutX="44.0" layoutY="42.0" text="Zvol tabulku z databáze" />
-      <Label fx:id="choosedTable" layoutX="50.0" layoutY="171.0" text="Label" />
-      <TableView fx:id="recordsTable" layoutX="35.0" layoutY="222.0" prefHeight="200.0" prefWidth="774.0">
-    
-      </TableView>
-      <MenuBar prefHeight="28.0" prefWidth="831.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0"
+            prefWidth="831.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.davidhavel.javasql.AppController">
+    <children>
+        <Button layoutX="546.0" layoutY="94.0" mnemonicParsing="false" onAction="#getRecord" prefHeight="47.0"
+                prefWidth="129.0" text="Získat záznam"/>
+        <ComboBox fx:id="chooseTable" layoutX="43.0" layoutY="128.0" prefWidth="150.0"/>
+        <Label layoutX="43.0" layoutY="94.0" text="Zvol tabulku z databáze"/>
+        <Label fx:id="choosedTable" layoutX="43.0" layoutY="171.0" text="Label"/>
+        <TableView fx:id="recordsTable" layoutX="35.0" layoutY="222.0" prefHeight="200.0" prefWidth="774.0">
+            <placeholder>
+                <Label text="Nebyla vybrána žádná tabulka"/>
+            </placeholder>
+
+        </TableView>
+        <MenuBar fx:id="menuBar" prefHeight="28.0" prefWidth="831.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close"/>
+                    </items>
+                </Menu>
+                <Menu fx:id="newConnectionItem2" mnemonicParsing="false" text="Spojení">
+                    <!-- Menu items go here -->
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <Label layoutX="43.0" layoutY="28.0" text="Super Duper SQL Connector">
+            <font>
+                <Font name="Apple Chancery" size="25.0"/>
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

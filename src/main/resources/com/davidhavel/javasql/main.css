@@ -1,0 +1,34 @@
+/*
+!* Set background color for the entire table view *!
+.table-view {
+    -fx-background-color: #f0f0f0;
+}
+
+!* Set background and border color for each row *!
+.table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1px;
+
+}
+.table-column {
+    -fx-alignment: CENTER;
+    -fx-padding: 10px;
+}
+
+!* Alternate row colors for better readability *!
+.table-row-cell:odd {
+    -fx-background-color: #f8f8f8;
+}
+
+!* Set background color for selected rows and text color for better contrast *!
+.table-row-cell:selected {
+    -fx-background-color: #0093ff;
+    -fx-text-fill: #ffffff;
+}
+
+!* Set background color for table column headers *!
+.table-column {
+    -fx-background-color: #f0f0f0;
+}
+*/
