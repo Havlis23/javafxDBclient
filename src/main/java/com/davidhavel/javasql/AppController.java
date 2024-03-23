@@ -51,7 +51,7 @@ public class AppController implements Initializable {
             connection = DriverManager.getConnection("jdbc:mysql://" + host + "/" + dbname + "?characterEncoding=UTF8", user, pass);
             System.out.println("Spojení s DB navázáno");
             DatabaseMetaData metaData = connection.getMetaData();
-            ResultSet tables = metaData.getTables(null, null, "%", null);
+            ResultSet tables = metaData.getTables(null, null, "%", null); //zmenit parametry
             ObservableList<String> tableNames = FXCollections.observableArrayList();
             while (tables.next()) {
                 tableNames.add(tables.getString("TABLE_NAME"));
@@ -156,17 +156,17 @@ public class AppController implements Initializable {
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet resultSet = statement.executeQuery("SELECT * FROM " + selectedTable);
 
-            recordsTable.getColumns().clear();
+            recordsTable.getColumns().clear();  // vycisteni tabulky
             ResultSetMetaData metaData = resultSet.getMetaData();
-            int columnCount = metaData.getColumnCount();
+            int columnCount = metaData.getColumnCount();  // pocet sloupcu z tabulky
 
-            for (int i = 1; i <= columnCount; i++) {
+            for (int i = 1; i <= columnCount; i++) { // vytvoreni sloupcu
                 String columnName = metaData.getColumnName(i);
                 TableColumn<ObservableList<String>, String> column = new TableColumn<>(columnName);
                 final int columnIndex = i - 1;
                 column.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(columnIndex)));
                 recordsTable.getColumns().add(column);
-            }
+            } // konec for cyklu - dobra prace
 
             ObservableList<ObservableList<String>> records = FXCollections.observableArrayList();
 
