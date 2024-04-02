@@ -22,10 +22,10 @@ import java.util.ResourceBundle;
 
 public class AppController implements Initializable {
 
-    private static String user = "it-davidhavel";
-    private static String pass = "aSdf.1234";
-    private static String host = "sql.stredniskola.com:3306";
-    private static String dbname = "davidhavel";
+    private static String user = "db-user";
+    private static String pass = "db-password";
+    private static String host = "db-host:port";
+    private static String dbname = "db-name";
     @FXML
     private ComboBox<String> chooseTable;
     @FXML
